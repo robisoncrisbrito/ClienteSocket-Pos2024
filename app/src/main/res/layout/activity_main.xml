@@ -8,12 +8,53 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tvTipoDados"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Tipo de Dados:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <RadioGroup
+        android:id="@+id/rgTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/tvTipoDados"
+        app:layout_constraintTop_toBottomOf="@+id/tvTipoDados">
+
+        <RadioButton
+            android:id="@+id/rbHora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Hora" />
+
+        <RadioButton
+            android:id="@+id/rbData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btEnviar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Enviar"
+        app:layout_constraintStart_toStartOf="@+id/rgTipo"
+        app:layout_constraintTop_toBottomOf="@+id/rgTipo" />
+
+    <TextView
+        android:id="@+id/tvResposta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Resposta"
+        app:layout_constraintStart_toStartOf="@+id/btEnviar"
+        app:layout_constraintTop_toBottomOf="@+id/btEnviar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
