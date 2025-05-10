@@ -1,7 +1,9 @@
 package br.edu.utfpr.clientesocket_pos2024
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var rbData: RadioButton
     private lateinit var btEnviar: Button
     private lateinit var tvResposta: TextView
+    private lateinit var progressBar: ProgressBar
 
     private val ip = "192.168.68.101"
     private val port = 12345
@@ -31,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         rbData = findViewById(R.id.rbData)
         btEnviar = findViewById(R.id.btEnviar)
         tvResposta = findViewById(R.id.tvResposta)
+        progressBar = findViewById(R.id.progressBar)
+
 
         btEnviar.setOnClickListener {
             btEnviarOnClick()
@@ -39,6 +44,8 @@ class MainActivity : AppCompatActivity() {
     } // fim do onCreate()
 
     private fun btEnviarOnClick() {
+
+        progressBar.visibility = View.VISIBLE
 
         Thread {
 
@@ -58,7 +65,9 @@ class MainActivity : AppCompatActivity() {
             val resposta = input.readLine() //linha bloqueante
 
             runOnUiThread {
+                Thread.sleep(1000)
                 tvResposta.text = resposta
+                progressBar.visibility = View.GONE
             }
 
         }.start()
